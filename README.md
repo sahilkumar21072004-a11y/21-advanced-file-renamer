@@ -1,221 +1,114 @@
-# 📂 Advanced File Renamer PRO  
-### (Python • OS Automation • CLI Utility Tool)
+# Advanced File Renamer PRO
 
----
+A small Python command-line utility for applying consistent naming rules to multiple files in a folder.
 
-## 📌 Project Overview
+![Advanced File Renamer PRO screenshot](Screenshot.png)
 
-**Advanced File Renamer PRO** is a powerful command-line based automation tool  
-built using Python that enables bulk file renaming with customizable patterns.
+> **Status:** Portfolio utility. Always test with a disposable folder first. The current script previews proposed names in dry-run mode, but it does not yet provide undo/history or robust destination-collision handling.
 
-This project goes beyond basic renaming scripts by supporting:
+## Features
 
-- Prefix and suffix addition  
-- Sequential numbering  
-- Text replacement  
-- Optional file extension change  
-- Safe preview mode (Dry Run)  
+- Add a prefix to each filename.
+- Add a suffix before the extension.
+- Replace text in the filename.
+- Optionally set a new extension.
+- Append sequential numbering to generated names.
+- Preview proposed changes with dry-run mode.
+- Uses Python's standard library; no third-party packages required.
 
-It demonstrates practical file system manipulation and real-world automation skills,  
-making it a strong **resume-ready Python utility project**.
+## Requirements
 
----
+- Python 3.10 or newer recommended
+- Windows, macOS, or Linux
 
-## 🎯 Purpose of the Project
+## Run locally
 
-The primary objectives of this project are:
+1. Clone or download this repository.
+2. Open a terminal in the project directory.
+3. Check Python is installed:
 
-- To automate bulk file renaming operations  
-- To practice OS-level file handling in Python  
-- To design a flexible and configurable CLI tool  
-- To implement safe file operation logic  
-- To build a real-world automation utility suitable for portfolio showcase  
+   ```bash
+   python --version
+   ```
 
-This tool is especially useful for:
+4. Run the script:
 
-- Organizing project files  
-- Renaming images in bulk  
-- Preparing datasets  
-- Structuring assignment submissions  
-- Managing media collections  
+   ```bash
+   python file_renamer_pro.py
+   ```
 
----
+On some systems, use `python3 file_renamer_pro.py`.
 
-## ✨ Key Features
+## Interactive prompts
 
-### 🔢 Sequential Numbering
-Automatically appends numbering to files to prevent conflicts and maintain order.
+The script asks for:
 
-Example:
----
-
-### 🏷 Prefix & Suffix Support
-Add custom text before or after filenames.
-
-Example:
----
-
-### 🔁 Text Replacement
-Replace specific text within filenames.
+1. **Folder path** — the existing folder containing files to rename.
+2. **Prefix** — optional text placed at the start of each filename.
+3. **Suffix** — optional text placed after the filename and before the extension.
+4. **Text to replace** — optional substring in the filename.
+5. **Replace with** — replacement text, if a search string was entered.
+6. **Change extension** — optional new extension, such as `txt` or `jpg`.
+7. **Dry run?** — answer `yes` to preview proposed names without renaming files.
 
 Example:
----
 
-### 🔄 Change File Extension
-Optionally convert file extensions during renaming.
+```text
+===== Advanced File Renamer PRO =====
+Enter folder path: C:\Users\YourName\Documents\sample
+Enter prefix (optional): project_
+Enter suffix (optional): _final
+Text to replace (leave blank if none): draft
+Replace with: report
+Change extension (e.g. txt, jpg) or leave blank:
+Dry run? (yes/no): yes
+```
 
-Example:
----
+This is an illustrative input example; use a real test folder path on your machine.
 
-### 🔍 Dry Run Mode (Safe Preview)
-Preview changes before applying them.
+## Naming example
 
-- No file is modified
-- Helps prevent accidental renaming
-- Adds production-level safety
+For a file named `draft_notes.txt`, using prefix `client_`, suffix `_final`, replacement `draft` → `report`, and numbering enabled by the current script, the proposed name is similar to:
 
----
+```text
+client_report_notes_1_final.txt
+```
 
-### ⚙ CLI-Based Interface
-Interactive command-line interface for:
+The numeric suffix is currently added automatically to every generated filename, starting at 1 for each run.
 
-- Folder selection  
-- Renaming rules configuration  
-- Safe execution  
+## Safety notes and known limitations
 
----
+- Start with dry-run mode and review every proposed name.
+- Use a copy of your files for the first real run.
+- The script currently does not check for duplicate generated names or safely plan around destination-name collisions. A rename can fail or behave differently across operating systems if the destination already exists.
+- There is no undo or rollback history yet.
+- The extension option changes the filename extension only; it does not convert the file's content or format.
+- Files are processed in the order returned by the operating system, which is not guaranteed to be alphabetical.
+- Only files directly inside the chosen folder are processed; subfolders are not traversed.
+- Tests have not been claimed as run for this repository.
 
-## 🛠 Technology Stack
+## Project structure
 
-| Technology | Purpose |
-|------------|----------|
-| Python 3 | Core programming language |
-| os module | File system interaction |
-| CLI input handling | User configuration |
-| String manipulation | Dynamic filename formatting |
+```text
+21-advanced-file-renamer/
+├── file_renamer_pro.py
+├── Screenshot.png
+└── README.md
+```
 
-No external libraries are required.
+## Roadmap
 
----
+- Add destination-collision checks and a clear conflict policy.
+- Add a confirmation step before applying changes.
+- Add automated tests using temporary directories.
+- Add undo/history support.
+- Add optional alphabetical or date-based ordering.
+- Add command-line flags for repeatable automation.
 
-## 📂 Project Structure
+## Author
 
-Clean and minimal structure reflecting practical utility design.
-
----
-
-## ▶ How to Run
-
-### Step 1
-Ensure Python 3 is installed.
-
-### Step 2
-Run the script:
-
-### Step 3
-Provide:
-
-- Folder path  
-- Prefix (optional)  
-- Suffix (optional)  
-- Text replacement (optional)  
-- Extension change (optional)  
-- Dry run mode (yes/no)  
+**Sahil Kumar** — Python automation and software development portfolio.
 
 ---
 
-## 🧠 Learning Outcomes
-
-After completing this project, you will understand:
-
-- Bulk file handling in Python  
-- OS module operations  
-- Safe file renaming strategies  
-- Dynamic string formatting  
-- CLI tool design principles  
-- Writing reusable automation scripts  
-
-These are foundational skills for:
-
-- System scripting  
-- DevOps automation  
-- Data preprocessing  
-- Productivity tools development  
-
----
-
-## 🚀 Real-World Applications
-
-This tool can be used for:
-
-- Dataset preparation  
-- Image batch renaming  
-- Academic project submission formatting  
-- File version management  
-- Media organization  
-- Log file processing  
-
----
-
-## ⚠ Safety Considerations
-
-- Dry run mode prevents accidental renaming  
-- Sequential numbering avoids file conflicts  
-- Folder existence validation ensures safe execution  
-
----
-
-## 🔮 Future Enhancements
-
-Possible upgrades include:
-
-- GUI version using Tkinter  
-- Undo functionality  
-- Regex-based renaming  
-- Duplicate file detection  
-- Logging system  
-- Sorting by date or size  
-- Scheduled automation  
-
----
-
-## ⭐ Why This Project Is Important
-
-This project demonstrates that the developer can:
-
-- Work with file systems safely  
-- Build real-world automation tools  
-- Design configurable CLI utilities  
-- Write clean and structured Python scripts  
-- Implement practical logic beyond basic coding exercises  
-
-For recruiters, this signals:
-
-> The developer understands system-level scripting and automation, not just theoretical programming.
-
----
-
-## 🏆 Achievement
-
-After completing this project, you now have:
-
-- A professional automation utility  
-- Strong file system manipulation skills  
-- Practical CLI tool development experience  
-- A resume-worthy Python project  
-- Progress toward intermediate-level Python development  
-
----
-
-## 👨‍💻 Author
-
-**Sahil**  
-Aspiring Software Engineer  
-Python & Frontend Developer  
-Focused on building practical real-world tools 🚀
-
----
-
-## 📜 License
-
-This project is open-source and intended for educational and learning purposes.
+This README documents the current implementation and its known limitations rather than implying unimplemented safeguards.
